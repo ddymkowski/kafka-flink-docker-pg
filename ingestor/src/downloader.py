@@ -3,6 +3,7 @@ from typing import Any, Generator
 
 import pydantic
 from requests import Session
+
 from common.enums import Errors
 from ingestor.src.schemas.binance import BinanceKafkaData, BinanceTicker
 
