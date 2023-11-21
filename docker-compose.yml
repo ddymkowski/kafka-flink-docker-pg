@@ -73,7 +73,9 @@ services:
       - kafka3
 
   jobmanager:
-    image: pyflink/playgrounds:1.13.0-rc2
+    build:
+      context: ./docker/flink/
+      dockerfile: docker/flink/Dockerfile
     volumes:
       - ./processors:/opt/processors
     hostname: "jobmanager"
@@ -85,7 +87,9 @@ services:
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
   taskmanager:
-    image: pyflink/playgrounds:1.13.0-rc2
+    build:
+      context: ./docker/flink/
+      dockerfile: docker/flink/Dockerfile
     volumes:
       - ./processors:/opt/processors
     expose:

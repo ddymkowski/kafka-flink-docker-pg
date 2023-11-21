@@ -11,3 +11,5 @@ create-topic:
 	docker-compose exec kafka1 kafka-topics --create --zookeeper zookeeper:2181  --replication-factor $(replication_factor) --partitions $(partitions) --topic $(name)
 run_aggregator:
 	docker-compose exec jobmanager ./bin/flink run -py /opt/processors/aggregator.py
+run_ingestor:
+	export PYTHONPATH=$PYTHONPATH:$(pwd) && python ingestor/main.py
