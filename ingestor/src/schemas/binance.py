@@ -4,7 +4,7 @@ from typing import Any, Optional
 
 from pydantic import BaseModel
 
-from common.enums import Errors
+from src.common.enums import Errors
 
 
 class BinanceTicker(BaseModel):

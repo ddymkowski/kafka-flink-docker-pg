@@ -2,9 +2,9 @@ import time
 
 import requests
 
-from ingestor.src.downloader import BinanceDataDownloader
-from ingestor.src.publisher import KafkaPublisher
-from ingestor.src.schemas.binance import BinanceKafkaData
+from src.downloader import BinanceDataDownloader
+from src.publisher import KafkaPublisher
+from src.schemas.binance import BinanceKafkaData
 
 
 class BinanceIngestionOrchestrator:

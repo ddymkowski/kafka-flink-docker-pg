@@ -1,6 +1,10 @@
 replication_factor ?= 1
 partitions ?= 1
+ingestion_interval ?= 3
 
+
+build:
+	docker-compose build
 up:
 	docker-compose up
 down:
@@ -10,6 +14,6 @@ cleanup:
 create-topic:
 	docker-compose exec kafka1 kafka-topics --create --zookeeper zookeeper:2181  --replication-factor $(replication_factor) --partitions $(partitions) --topic $(name)
 run_aggregator:
-	docker-compose exec jobmanager ./bin/flink run -py /opt/processors/aggregator.py
+	docker-compose exec jobmanager ./bin/flink run -py /opt/processor/src/aggregator.py
 run_ingestor:
-	export PYTHONPATH=$PYTHONPATH:$(pwd) && python ingestor/main.py
+	docker-compose exec ingestor python main.py --scrape-interval-seconds $(ingestion_interval)
